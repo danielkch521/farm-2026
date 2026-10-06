@@ -14,3 +14,10 @@ class FertilizeCrop:
     def __call__(self, crop):
         return f"{crop.name} was fertilized with {self.amount} kg of {self.fertilizer_type}."
 
+class HarvestCrop:
+    def __init__(self, tonnes):
+        self.tonnes = tonnes
+
+    def __call__(self, crop):
+        return f"{self.tonnes} tonnes of {crop.name} were harvested."
+

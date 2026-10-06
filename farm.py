@@ -48,6 +48,7 @@ class Farm:
         # Using functors
         water_functor = WaterCrop(10)
         fertilize_functor = FertilizeCrop("Nitrogen", 5)
+        harvest_functor = HarvestCrop(2)
 
         msg  = "Running Farm:\n"
         msg += "\n"
@@ -57,6 +58,10 @@ class Farm:
         msg += "\n\n"
         msg += "Applying fertilizer to crops:\n"
         msg += self.apply_to_crops(fertilize_functor)
+
+        msg += "\n\n"
+        msg += "Harvesting crops:\n"
+        msg += self.apply_to_crops(harvest_functor)
 
         msg += "\n\n"
         msg += "Animal noises:\n"

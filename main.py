@@ -2,6 +2,7 @@ from farm import Farm
 from animals.dog import Dog
 from animals.cow import Cow
 from animals.chicken import Chicken
+from animals.sheep import Sheep
 from crops import *
 from equipment.equipment import Equipment
 from equipment.faulty_equipment import FaultyEquipment
@@ -13,6 +14,7 @@ if __name__ == "__main__":
     farm.add_animal(Dog("Buddy"))
     farm.add_animal(Cow("Bessie"))
     farm.add_animal(Chicken("Clucky"))
+    farm.add_animal(Sheep("Shaun"))
 
     # Add crops
     farm.add_crop(Corn())

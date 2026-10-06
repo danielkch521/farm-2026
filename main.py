@@ -20,6 +20,7 @@ if __name__ == "__main__":
     farm.add_crop(Corn())
     farm.add_crop(Wheat())
     farm.add_crop(Rice())
+    farm.add_crop(Potato())
 
     # Add equipment
     farm.add_equipment(Equipment("Tractor"))

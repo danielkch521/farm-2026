@@ -6,6 +6,7 @@ from animals.sheep import Sheep
 from crops import *
 from equipment.equipment import Equipment
 from equipment.faulty_equipment import FaultyEquipment
+from equipment.sprinkler import Sprinkler
 
 if __name__ == "__main__":
     farm = Farm()
@@ -25,6 +26,7 @@ if __name__ == "__main__":
     # Add equipment
     farm.add_equipment(Equipment("Tractor"))
     farm.add_equipment(Equipment("Plow"))
+    farm.add_equipment(Sprinkler("Sprinkler", 20))
     farm.add_equipment(FaultyEquipment("Old Harvester"))
 
     # Run the farm and print animal noises

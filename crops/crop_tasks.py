@@ -4,7 +4,7 @@ class WaterCrop:
         self.water_amount = water_amount
 
     def __call__(self, crop):
-        return f"{crop.name()} received {self.water_amount} liters of water."
+        return f"{crop.name} received {self.water_amount} liters of water."
 
 class FertilizeCrop:
     def __init__(self, fertilizer_type, amount):
@@ -12,5 +12,5 @@ class FertilizeCrop:
         self.amount = amount
 
     def __call__(self, crop):
-        return f"{crop.name()} was fertilized with {self.amount} kg of {self.fertilizer_type}."
+        return f"{crop.name} was fertilized with {self.amount} kg of {self.fertilizer_type}."
 

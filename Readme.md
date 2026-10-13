@@ -15,31 +15,38 @@ This repository is a small demonstration of working with classes, inheritance, a
 
 ## Getting started
 
-You need **Python 3.9 or newer** and **Git**. Check what you have:
+This project uses two libraries that aren't part of a normal Python3 install. We install them into an *environment*: a private set of libraries for this project only, so it can't clash with anything else on your computer.
 
-```
-python3 --version
-git --version
-```
+There are two ways to do this. Pick **one**:
 
-> **Windows:** in these instructions, type `py` instead of `python3` if `python3` isn't found.
+- **Option A: venv + pip.** Built into Python. Use this if you already have Python installed.
+- **Option B: conda.** Use this if you have [Anaconda](https://www.anaconda.com/download), [Miniconda](https://docs.anaconda.com/miniconda/) or [Miniforge](https://conda-forge.org/download/) installed, or if your course told you to use it. Conda installs Python for you too.
 
-This project uses libraries that aren't part of a normal Python3 install, so we install them into a *virtual environment* (venv). That's a private folder of libraries for this project only, so it can't clash with anything else on your computer.
+Either way you need **Git**. Check you have it with `git --version`, then get the code:
 
-1. Get the code:
 ```
 git clone https://github.com/rob-c/farm.git
 cd farm
 ```
 
-2. Create a virtual env inside the project:
+### Option A: venv + pip
+
+You need **Python 3.9 or newer**. Check what you have:
+
+```
+python3 --version
+```
+
+> **Windows:** in these instructions, type `py` instead of `python3` if `python3` isn't found.
+
+1. Create a virtual env inside the project:
 ```
 python3 -m venv env
 ```
 
 You can use any folder name, but `env` is already listed in this project's `.gitignore`, so Git won't try to commit it.
 
-3. Activate the virtual env:
+2. Activate the virtual env:
 
 macOS / Linux:
 ```
@@ -56,24 +63,59 @@ Windows (PowerShell):
 
 Your prompt now starts with `(env)`, which tells you the venv is active.
 
-4. Install the libraries this project needs into the virtual env:
+3. Install the libraries this project needs into the virtual env:
 ```
 (env) > python3 -m pip install -r requirements.txt
 ```
 
-5. Run the project:
+4. Run the project:
 ```
 (env) > python3 main.py
 ```
 
-You should see output like the [example output](#example-output) below. If you see `ModuleNotFoundError: No module named 'cowsay'`, the venv is not active (step 3) or the libraries aren't installed (step 4).
+You should see output like the [example output](#example-output) below. If you see `ModuleNotFoundError: No module named 'cowsay'`, the venv is not active (step 2) or the libraries aren't installed (step 3).
 
-6. Leave the virtual env when you're finished:
+5. Leave the virtual env when you're finished:
 ```
 (env) > deactivate
 ```
 
-Next time, you only need steps 3 and 5.
+Next time, you only need steps 2 and 4.
+
+### Option B: conda
+
+> **Windows:** run these commands in the **Anaconda Prompt** (or Miniforge Prompt) from the Start menu.
+
+1. Create the environment from `environment.yml`. This downloads Python and the libraries, so it takes a minute or two:
+```
+conda env create -f environment.yml
+```
+
+2. Activate it:
+```
+conda activate farm
+(farm) > _
+```
+
+Your prompt now starts with `(farm)`, which tells you the environment is active.
+
+3. Run the project:
+```
+(farm) > python main.py
+```
+
+You should see output like the [example output](#example-output) below. If you see `ModuleNotFoundError: No module named 'cowsay'`, the environment is not active (step 2).
+
+4. Leave the environment when you're finished:
+```
+(farm) > conda deactivate
+```
+
+Next time, you only need steps 2 and 3.
+
+Conda keeps its environments in its own folder, not inside the project, so there's nothing for Git to ignore. To start again from scratch, run `conda env remove -n farm` and repeat step 1.
+
+> **Why both `environment.yml` and `requirements.txt`?** The two libraries are only published on [PyPI](https://pypi.org) (where pip gets packages), not on conda's channels. So `environment.yml` asks conda for Python and pip, then tells pip to install everything listed in `requirements.txt`. If you add a library to the project, add it to `requirements.txt` and both options pick it up.
 
 ## Directory Structure
 
@@ -102,6 +144,7 @@ Next time, you only need steps 3 and 5.
 │   ├── faulty_equipment.py
 │   ├── sprinkler.py
 │   └── __init__.py
+├── environment.yml
 ├── farm.py
 ├── __init__.py
 ├── main.py

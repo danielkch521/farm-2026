@@ -1,0 +1,18 @@
+# Conda environment for the farm tutorial.
+#
+#   conda env create -f environment.yml
+#   conda activate farm
+#
+# The two libraries this project uses (python-cowsay and lolpython) are
+# only published on PyPI, not on conda channels, so conda installs Python
+# and pip, then pip installs them from requirements.txt. Add new
+# libraries to requirements.txt and both setups pick them up.
+name: farm
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt
